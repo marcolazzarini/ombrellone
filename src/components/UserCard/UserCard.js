@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import moment from 'moment'
 import * as Styles from './styles'
 import database from '../../firebase'
 
@@ -8,15 +9,40 @@ import database from '../../firebase'
 const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1);
 const UserCard = props => {
     const [expenseValue, setExpenseValue] = useState('');
-    const [addExpenseOpened, setAddExpenseOpened] = useState(false);
+    const [entries, setEntries] = useState([]);
+    const [userEntries, setUserEntries] = useState([]);
+    const [bodyOpened, setBodyOpened] = useState(false);
+    const [addExpense, setAddExpense] = useState(false);
+    const [showHistory, setShowHistory] = useState(false);
     const { img, id, value, max } = props;
 
-    const dataRef = database.child('consumazioni').child(id)
+    const userDataRef = database.child('consumazioni').child(id)
+    const entriesRef = database.child('entries');
+
+    const sortFn = (entry1, entry2) => {
+        if (entry1.millis > entry2.millis) return -1;
+        if (entry2.millis > entry1.millis) return 1;
+        return 0;
+    };
+
+    useEffect(() => {
+        database.child('entries').on('value', snapshot => {
+            setEntries(snapshot.val());
+
+            let userEntries = snapshot.val().filter(entry => entry.user === id);
+            userEntries = userEntries.sort(sortFn);
+            setUserEntries(userEntries)
+        });
+    }, [id]);
 
     const pay = () => {
-        dataRef.set(value-expenseValue);
+        userDataRef.set(value-expenseValue);
+        let updatedEntries = [ ...entries, { millis: new Date().getTime(), user: id, value: expenseValue } ];
+        entriesRef.set(updatedEntries);
+
         setExpenseValue(0);
-        setAddExpenseOpened(false);
+        setAddExpense(false);
+        setBodyOpened(false);
     };
 
     const computeColor = value => value >=20 ? '#265FFF' : (value <= 8 ? '#DA0A16' : '#B18900');
@@ -41,9 +67,32 @@ const UserCard = props => {
         }
     };
 
+    const handlePayClick = () => {
+        setShowHistory(false);
+
+        if (addExpense) {
+            setBodyOpened(false);
+            setAddExpense(false);
+        } else {
+            if (!bodyOpened) setBodyOpened(true);
+            setAddExpense(true);
+        }
+    };
+
+    const handleHistoryClick = () => {
+        setAddExpense(false);
+        if (showHistory) {
+            setBodyOpened(false);
+            setShowHistory(false);
+        } else {
+            if (!bodyOpened) setBodyOpened(true);
+            setShowHistory(true);
+        }
+    };
+
     return (
         <Styles.UserCard>
-            <Styles.Header onClick={() => setAddExpenseOpened(!addExpenseOpened)}>
+            <Styles.Header>
                 <Styles.AvatarWithProgress>
                     <CircularProgressbarWithChildren value={value} minValue={0} maxValue={max} counterClockwise={true} styles={computeProgressStyles()}>
                         <Styles.Avatar>
@@ -54,14 +103,33 @@ const UserCard = props => {
                 <Styles.UserInfo>
                     <Styles.User>{emojiByUser(id)}&nbsp;{ capitalize(id) }</Styles.User>
                     <Styles.LeftValue color={computeColor(value)}>€ {value}</Styles.LeftValue>
+                    <Styles.Action onClick={handlePayClick}><h2><span role="img" aria-label="sun">💸️</span></h2></Styles.Action>
+                    <Styles.Action onClick={handleHistoryClick}><h2><span role="img" aria-label="sun">🗓</span></h2></Styles.Action>
                 </Styles.UserInfo>
             </Styles.Header>
-            <Styles.Body opened={addExpenseOpened}>
-                <Styles.InputContainer>
-                    <Styles.UDM>€</Styles.UDM>
-                    <Styles.Input type="number" autoFocus value={expenseValue} onChange={event => setExpenseValue(event.target.value)} />
-                </Styles.InputContainer>
-                <Styles.Button type="button" onClick={pay}><span role="img" aria-label="whale">🍺</span>&nbsp;Paga</Styles.Button>
+            <Styles.Body opened={bodyOpened}>
+                { addExpense && (
+                    <>
+                        <Styles.InputContainer>
+                            <Styles.UDM>€</Styles.UDM>
+                            <Styles.Input type="number" autoFocus value={expenseValue} onChange={event => setExpenseValue(event.target.value)} />
+                        </Styles.InputContainer>
+                        <Styles.Button type="button" onClick={pay}><span role="img" aria-label="whale">🍺</span>&nbsp;Paga</Styles.Button>
+                    </>
+                )}
+                {
+                    showHistory && (
+                        <Styles.History>
+                            <Styles.HistoryTitle>Storico</Styles.HistoryTitle>
+                            { userEntries.map(entry => (
+                                <Styles.DataEntry>
+                                    <Styles.Time>{ moment(entry.millis).format('DD MMM YYYY, HH:mm') }</Styles.Time>
+                                    <Styles.Value>€ &nbsp;{ entry.value }</Styles.Value>
+                                </Styles.DataEntry>)
+                            )}
+                        </Styles.History>
+                    )
+                }
             </Styles.Body>
         </Styles.UserCard>
     )

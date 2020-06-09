@@ -11,15 +11,14 @@ export const UserCard = styled.div`
 export const Header = styled.div`
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: 8px;
 `;
 
 export const Body = styled.div`
   display: flex;
   align-items: center;
-  overflow: hidden;
   transition: height ease-out .25s;
-  ${ props => props.opened ? `opacity: 1; padding: 16px; height: 54px;` : `opacity: 0; padding: 0; height: 0;` };
+  ${ props => props.opened ? `opacity: 1; padding: 16px; height: auto;` : `opacity: 0; padding: 0; height: 0;` };
 `;
 
 export const Input = styled.input`
@@ -38,6 +37,7 @@ export const Input = styled.input`
 `;
 export const InputContainer = styled.div`
   position: relative;
+  flex: 1;
 `;
 
 export const UDM = styled.div`
@@ -98,4 +98,44 @@ export const Avatar = styled.div`
 export const AvatarWithProgress = styled.div`
   width: 70px;
   height: 70px;
+`;
+
+export const DataEntry = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+`;
+
+export const Action = styled.div`
+  width: 40px;
+  height: 40px;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h2 {
+    margin: 0;
+  }
+`;
+
+export const History = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const HistoryTitle = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+`;
+
+export const Time = styled.div`
+  font-size: 16px;
+  margin-right: 16px;
+  flex: 1;
+`;
+
+export const Value = styled.div`
+  font-size: 16px;
+  font-weight: 600;
 `;
