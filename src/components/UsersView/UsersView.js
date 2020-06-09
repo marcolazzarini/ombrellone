@@ -11,12 +11,10 @@ const UsersView = () => {
         database.child('users').on('value', snapshot => {
             setUsers(snapshot.val());
         });
-
         database.child('consumazioni').on('value', snapshot => {
             setData(snapshot.val());
         });
     }, []);
-
 
     if (!users || !data) return <div />;
 

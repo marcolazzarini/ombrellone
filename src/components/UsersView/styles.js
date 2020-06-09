@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import theme from '../../theme'
 
 export const AppContainer = styled.div`
-  height: 100%;
   overflow-x: hidden;
   background-color: ${ theme.colors.background };
   color: #fff;
