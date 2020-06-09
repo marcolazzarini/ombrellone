@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/ombrellone/static/css/main.cec3e9af.chunk.css",
-    "main.js": "/ombrellone/static/js/main.5ec97790.chunk.js",
-    "main.js.map": "/ombrellone/static/js/main.5ec97790.chunk.js.map",
+    "main.css": "/ombrellone/static/css/main.eeb5d027.chunk.css",
+    "main.js": "/ombrellone/static/js/main.a2e35502.chunk.js",
+    "main.js.map": "/ombrellone/static/js/main.a2e35502.chunk.js.map",
     "runtime-main.js": "/ombrellone/static/js/runtime-main.74521488.js",
     "runtime-main.js.map": "/ombrellone/static/js/runtime-main.74521488.js.map",
     "static/css/2.f524894f.chunk.css": "/ombrellone/static/css/2.f524894f.chunk.css",
     "static/js/2.a89d97fc.chunk.js": "/ombrellone/static/js/2.a89d97fc.chunk.js",
     "static/js/2.a89d97fc.chunk.js.map": "/ombrellone/static/js/2.a89d97fc.chunk.js.map",
     "index.html": "/ombrellone/index.html",
-    "precache-manifest.2a1a99f0373eebe87947af5c009939d9.js": "/ombrellone/precache-manifest.2a1a99f0373eebe87947af5c009939d9.js",
+    "precache-manifest.492858d62c36d1753c2e5d559618db0e.js": "/ombrellone/precache-manifest.492858d62c36d1753c2e5d559618db0e.js",
     "service-worker.js": "/ombrellone/service-worker.js",
     "static/css/2.f524894f.chunk.css.map": "/ombrellone/static/css/2.f524894f.chunk.css.map",
-    "static/css/main.cec3e9af.chunk.css.map": "/ombrellone/static/css/main.cec3e9af.chunk.css.map",
+    "static/css/main.eeb5d027.chunk.css.map": "/ombrellone/static/css/main.eeb5d027.chunk.css.map",
     "static/js/2.a89d97fc.chunk.js.LICENSE.txt": "/ombrellone/static/js/2.a89d97fc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.74521488.js",
     "static/css/2.f524894f.chunk.css",
     "static/js/2.a89d97fc.chunk.js",
-    "static/css/main.cec3e9af.chunk.css",
-    "static/js/main.5ec97790.chunk.js"
+    "static/css/main.eeb5d027.chunk.css",
+    "static/js/main.a2e35502.chunk.js"
   ]
 }
