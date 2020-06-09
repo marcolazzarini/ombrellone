@@ -19,7 +19,7 @@ const UserCard = props => {
         setAddExpenseOpened(false);
     };
 
-    const computeColor = value => value >=35 ? '#265FFF' : (value > 15 ? '#B18900' : '#DA0A16');
+    const computeColor = value => value >=20 ? '#265FFF' : (value <= 8 ? '#DA0A16' : '#B18900');
 
     const computeProgressStyles = () => buildStyles({
             strokeLinecap: 'butt',
