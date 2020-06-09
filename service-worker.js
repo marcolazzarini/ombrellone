@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ombrellone/precache-manifest.2d892de078a38cf03317e6a854bf4ad6.js"
+  "/ombrellone/precache-manifest.2a1a99f0373eebe87947af5c009939d9.js"
 );
 
 self.addEventListener('message', (event) => {
