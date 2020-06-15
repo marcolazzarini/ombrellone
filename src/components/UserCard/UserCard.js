@@ -121,8 +121,8 @@ const UserCard = props => {
                     showHistory && (
                         <Styles.History>
                             <Styles.HistoryTitle>Storico</Styles.HistoryTitle>
-                            { userEntries.map(entry => (
-                                <Styles.DataEntry>
+                            { userEntries.map((entry, index) => (
+                                <Styles.DataEntry key={index}>
                                     <Styles.Time>{ moment(entry.millis).format('DD MMM YYYY, HH:mm') }</Styles.Time>
                                     <Styles.Value>€ &nbsp;{ entry.value }</Styles.Value>
                                 </Styles.DataEntry>)

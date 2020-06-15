@@ -1,28 +1,79 @@
 {
-  "users": [
-    { "id": "seba", "img": "", "max": 42 },
-    { "id": "dario", "img": "", "max": 42 },
-    { "id": "tara", "img": "", "max": 42 },
-    { "id": "nico", "img": "", "max": 42 },
-    { "id": "lazza", "img": "", "max": 84 },
-    { "id": "ricky", "img": "", "max": 84 },
-    { "id": "teo", "img": "", "max": 84 }
+  "consumazioni":{
+    "dario":32,
+    "lazza":84,
+    "nico":42,
+    "ricky":74,
+    "seba":31,
+    "tara":42,
+    "teo":84
+  },
+  "entries":[
+    {
+      "millis":1591455600000,
+      "user":"seba",
+      "value":6
+    },
+    {
+      "millis":1591455600000,
+      "user":"dario",
+      "value":6
+    },
+    {
+      "millis":1591455600000,
+      "user":"ricky",
+      "value":5
+    },
+    {
+      "millis":1591542000000,
+      "user":"dario",
+      "value":4
+    },
+    {
+      "millis":1591542000000,
+      "user":"seba",
+      "value":5
+    },
+    {
+      "millis":1591542000000,
+      "user":"ricky",
+      "value":5
+    }
   ],
-  "entries": [
-    { "millis": "1591394400000", "value": 6, "user": "seba" },
-    { "millis": "1591394400000", "value": 6, "user": "dario" },
-    { "millis": "1591394400000", "value": 5, "user": "ricky" },
-    { "millis": "1591480800000", "value": 4, "user": "dario" },
-    { "millis": "1591480800000", "value": 5, "user": "seba" },
-    { "millis": "1591480800000", "value": 5, "user": "ricky" }
-  ],
-  "consumazioni": {
-    "seba": 42,
-    "dario": 42,
-    "nico": 42,
-    "tara": 42,
-    "lazza": 84,
-    "teo": 84,
-    "ricky": 84
-  }
+  "users":[
+    {
+      "id":"dario",
+      "img":"",
+      "max":42
+    },
+    {
+      "id":"lazza",
+      "img":"",
+      "max":84
+    },
+    {
+      "id":"nico",
+      "img":"",
+      "max":42
+    },
+    {
+      "id":"ricky",
+      "img":"",
+      "max":84
+    },
+    {
+      "id":"seba",
+      "max":42
+    },
+    {
+      "id":"tara",
+      "img":"",
+      "max":42
+    },
+    {
+      "id":"teo",
+      "img":"",
+      "max":84
+    }
+  ]
 }

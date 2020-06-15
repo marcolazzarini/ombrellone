@@ -83,7 +83,8 @@ export const User = styled.div`
 export const LeftValue = styled.div`
   font-size: 30px;
   font-weight: 600;
-  margin-right: 8px;
+  width: 90px;
+  text-align: center;
   color: ${ props => props.color };
 `;
 
