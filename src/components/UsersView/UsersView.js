@@ -7,6 +7,12 @@ const UsersView = () => {
     const [users, setUsers] = useState(null);
     const [data, setData] = useState(null);
 
+    const sortFn = (user1, user2) => {
+        if (user1.value > user2.value) return 1;
+        if (user2.value > user1.value) return -1;
+        return 0;
+    };
+
     useEffect(() => {
         database.child('users').on('value', snapshot => {
             setUsers(snapshot.val());
@@ -18,7 +24,7 @@ const UsersView = () => {
 
     if (!users || !data) return <div />;
 
-    const usersWithData = users.map(user => ({ ...user, value: data[user.id] }))
+    const usersWithData = users.map(user => ({ ...user, value: data[user.id] })).sort(sortFn)
     return (
         <Styles.AppContainer>
             <h1><span role="img" aria-label="palma">🌴</span>Ombrellone App<span role="img" aria-label="drink">🍹</span></h1>
