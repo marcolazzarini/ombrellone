@@ -33,7 +33,7 @@ const UserCard = props => {
             userTransactions = userTransactions.sort(sortFn);
             setUserTransactions(userTransactions)
         });
-    }, [id]);
+    }, [id, transactionsRef]);
 
     const pay = () => {
         userDataRef.set(value-parseInt(expenseValue));
