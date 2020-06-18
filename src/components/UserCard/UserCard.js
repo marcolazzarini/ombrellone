@@ -9,15 +9,15 @@ import database from '../../firebase'
 const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1);
 const UserCard = props => {
     const [expenseValue, setExpenseValue] = useState('');
-    const [entries, setEntries] = useState([]);
-    const [userEntries, setUserEntries] = useState([]);
+    const [transactions, setTransactions] = useState([]);
+    const [userTransactions, setUserTransactions] = useState([]);
     const [bodyOpened, setBodyOpened] = useState(false);
     const [addExpense, setAddExpense] = useState(false);
     const [showHistory, setShowHistory] = useState(false);
     const { img, id, value, max } = props;
 
-    const userDataRef = database.child('consumazioni').child(id)
-    const entriesRef = database.child('entries');
+    const userDataRef = database.child('consumazioni').child(id);
+    const transactionsRef = database.child('transactions');
 
     const sortFn = (entry1, entry2) => {
         if (entry1.millis > entry2.millis) return -1;
@@ -26,19 +26,19 @@ const UserCard = props => {
     };
 
     useEffect(() => {
-        database.child('entries').on('value', snapshot => {
-            setEntries(snapshot.val());
-
-            let userEntries = snapshot.val().filter(entry => entry.user === id);
-            userEntries = userEntries.sort(sortFn);
-            setUserEntries(userEntries)
+        transactionsRef.on('value', snapshot => {
+            const transactions = snapshot.val() || [];
+            setTransactions(transactions);
+            let userTransactions = transactions.filter(entry => entry.user === id);
+            userTransactions = userTransactions.sort(sortFn);
+            setUserTransactions(userTransactions)
         });
     }, [id]);
 
     const pay = () => {
-        userDataRef.set(value-expenseValue);
-        let updatedEntries = [ ...entries, { millis: new Date().getTime(), user: id, value: expenseValue } ];
-        entriesRef.set(updatedEntries);
+        userDataRef.set(value-parseInt(expenseValue));
+        let updatedTransactions = [ ...transactions, { millis: new Date().getTime(), user: id, value: parseInt(expenseValue) } ];
+        transactionsRef.set(updatedTransactions);
 
         setExpenseValue(0);
         setAddExpense(false);
@@ -121,7 +121,7 @@ const UserCard = props => {
                     showHistory && (
                         <Styles.History>
                             <Styles.HistoryTitle>Storico</Styles.HistoryTitle>
-                            { userEntries.map((entry, index) => (
+                            { userTransactions.map((entry, index) => (
                                 <Styles.DataEntry key={index}>
                                     <Styles.Time>{ moment(entry.millis).format('DD MMM YYYY, HH:mm') }</Styles.Time>
                                     <Styles.Value>€ &nbsp;{ entry.value }</Styles.Value>
