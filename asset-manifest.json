@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ombrellone/static/css/main.eeb5d027.chunk.css",
-    "main.js": "/ombrellone/static/js/main.bd76c0f6.chunk.js",
-    "main.js.map": "/ombrellone/static/js/main.bd76c0f6.chunk.js.map",
+    "main.js": "/ombrellone/static/js/main.2bb16bf2.chunk.js",
+    "main.js.map": "/ombrellone/static/js/main.2bb16bf2.chunk.js.map",
     "runtime-main.js": "/ombrellone/static/js/runtime-main.74521488.js",
     "runtime-main.js.map": "/ombrellone/static/js/runtime-main.74521488.js.map",
     "static/css/2.f524894f.chunk.css": "/ombrellone/static/css/2.f524894f.chunk.css",
     "static/js/2.1feaa800.chunk.js": "/ombrellone/static/js/2.1feaa800.chunk.js",
     "static/js/2.1feaa800.chunk.js.map": "/ombrellone/static/js/2.1feaa800.chunk.js.map",
     "index.html": "/ombrellone/index.html",
-    "precache-manifest.b872ea627efade5cbfa38e1616165a10.js": "/ombrellone/precache-manifest.b872ea627efade5cbfa38e1616165a10.js",
+    "precache-manifest.a00e46c511c8a6b1ff62b9b738c5f597.js": "/ombrellone/precache-manifest.a00e46c511c8a6b1ff62b9b738c5f597.js",
     "service-worker.js": "/ombrellone/service-worker.js",
     "static/css/2.f524894f.chunk.css.map": "/ombrellone/static/css/2.f524894f.chunk.css.map",
     "static/css/main.eeb5d027.chunk.css.map": "/ombrellone/static/css/main.eeb5d027.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.f524894f.chunk.css",
     "static/js/2.1feaa800.chunk.js",
     "static/css/main.eeb5d027.chunk.css",
-    "static/js/main.bd76c0f6.chunk.js"
+    "static/js/main.2bb16bf2.chunk.js"
   ]
 }
