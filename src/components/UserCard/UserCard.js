@@ -26,18 +26,18 @@ const UserCard = props => {
     };
 
     useEffect(() => {
-        transactionsRef.on('value', snapshot => {
+        database.child('transactions').on('value', snapshot => {
             const transactions = snapshot.val() || [];
             setTransactions(transactions);
-            let userTransactions = transactions.filter(entry => entry.user === id);
+            let userTransactions = transactions.filter(entry => entry.user === id && !entry.skip);
             userTransactions = userTransactions.sort(sortFn);
             setUserTransactions(userTransactions)
         });
-    }, [id, transactionsRef]);
+    }, [id]);
 
     const pay = () => {
-        userDataRef.set(value-parseInt(expenseValue));
-        let updatedTransactions = [ ...transactions, { millis: new Date().getTime(), user: id, value: parseInt(expenseValue) } ];
+        userDataRef.set(value-parseFloat(expenseValue));
+        let updatedTransactions = [ ...transactions, { millis: new Date().getTime(), user: id, value: parseFloat(expenseValue) } ];
         transactionsRef.set(updatedTransactions);
 
         setExpenseValue(0);
