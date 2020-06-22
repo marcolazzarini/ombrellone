@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0a7b189a54b7836e18bd79bb0ce029b2",
+    "revision": "2f83fa6baeb3ffb7d36bffba1a4a1824",
     "url": "/ombrellone/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ombrellone/static/css/2.f524894f.chunk.css"
   },
   {
-    "revision": "51a39048b3fe64747815",
+    "revision": "8bd5ee11241619ee1045",
     "url": "/ombrellone/static/css/main.eeb5d027.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ombrellone/static/js/2.1feaa800.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "51a39048b3fe64747815",
-    "url": "/ombrellone/static/js/main.fb5d8bfb.chunk.js"
+    "revision": "8bd5ee11241619ee1045",
+    "url": "/ombrellone/static/js/main.216d1120.chunk.js"
   },
   {
     "revision": "d3c7f556f282fbbca1cf",
